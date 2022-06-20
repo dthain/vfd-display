@@ -30,7 +30,7 @@ display can be multiplexed much like a multi-digit LED display.
           /               S
 ```
 
-No datasheet is available for the device itself, however, it is mentioned in [this datasheet](tdk-converter-datasheet.pdf) for DC/AC inverters,
+No datasheet is available for the device itself, however, it is mentioned in [this datasheet](TDK-CD1867N.pdf) for DC/AC inverters,
 which provides some key parameters:
 
 |Converter | Ef r.m.s Vac | If (mAac) | V1 (Vdc) | V2 (Vdc) | I1 (mAdc) max. | I2 (mAdc) max. | Display |
