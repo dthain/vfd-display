@@ -1,9 +1,21 @@
 # vfd-display
 
-Ndotes on building a display driver for a Futaba 16-LY-01ZL display.
-This is a sixteen digit alphanumeric display.  Each digit has sixteen
+Some notes on building a display driver for a Futaba 16-LY-01ZL alphanumeric display.
+It seems that Futaba no longer manufactures or supports these devices, but they are
+commonly available for secondhand purchase.  The device has 37 pins at 0.2in spacing.
+
+This is a vacuum flourescent display (VFD), which is a variant of the vacuum tube.
+A small AC current is used to heat a filament (cathode) when then produces electrons
+via thermionic emission.  The electrons are naturally attracted to anodes, if they
+are positively charged.  Each anode is coated with a flourescent material, and glows
+a distinctive amber/green color when active.  Between the cathode and anode is a grid
+that controls whether the electrons flow.
+
+This particular one is a sixteen digit alphanumeric display.  Each digit has sixteen
 segments, plus three more indicators: a dot in the upper left corner (Q) and
-a decimal (R) and comma (S) in the lower right corner.
+a decimal (R) and comma (S) in the lower right corner.  Each segment corresponds
+to one anode, and each digit is controlled by a separate grid.  As a result, the
+display can be multiplexed much like a multi-digit LED display.
 
 ```
 .             Q
@@ -18,15 +30,17 @@ a decimal (R) and comma (S) in the lower right corner.
           /               S
 ```
 
-No datasheet is available for the device itself, however, it is mentioned in [this datasheet](tdk-converter-datasheet.pdf) for DC/AC inverters:
+No datasheet is available for the device itself, however, it is mentioned in [this datasheet](tdk-converter-datasheet.pdf) for DC/AC inverters,
+which provides some key parameters:
 
-|Converter | E_f r.m.s V | I_f (mAac) | V_1 (Vdc) | V_2 (Vdc) | I_1 (mAdc) max. | I_2 (mAdc) max. | Display |
+|Converter | Ef r.m.s Vac | If (mAac) | V1 (Vdc) | V2 (Vdc) | I1 (mAdc) max. | I2 (mAdc) max. | Display |
 |---|---|---|---|---|---|---|---|
 |CD-1884N | 7.2 | 75 | -47 | -58 | 20.4 | 7.5 | 16-LY-01ZL |
 |CD-1884P | 7.2 | 75 | 58 | - | 29.9 | -| 16-LY-01ZL |
 
-The pinout can be determined quickly by applying 3V DC to the filament pins at each end,
-and then applying +30V DC to the grids and anodes:
+There are two power supply variants here: the N variant sets both the cathode and anodes well below ground, while the P variant sets the cathode at ground (+/- the small AC voltage) and the anodes and grids at 58V.  Ef is the AC voltage applied to the filament to generate electrons, and V1 is the potential difference between cathode and anodes.
+
+We can test the pinouts quickly by using some lower voltages that are easily available with components on hand.  Handily, the connections for the filament (either end) and grids are easily visible through the glass, while the anode connections are printed on the back of the device.  Test by applying 3.3V DC to the filament pins, and then using +30VDC to the grids and anodes to light up various segments:
 
 Pin | Type | Number
 ---|---|---
@@ -67,5 +81,6 @@ Pin | Type | Number
 35 | Grid | 16
 36 | Anode | A
 37 | Filament | Y
+
 
 
