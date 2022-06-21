@@ -32,7 +32,7 @@ display can be multiplexed much like a multi-digit LED display.
 
 ## Datasheets and Testing
 
-No datasheet is available for the device itself, however, it is mentioned in [this datasheet](TDK-CD1867N.pdf) for DC/AC inverters,
+No datasheet is available for the device itself, however, it is mentioned in [this datasheet](datasheets/TDK-CD1867N.pdf) for DC/AC inverters,
 which provides some key parameters:
 
 |Converter | Ef r.m.s Vac | If (mAac) | V1 (Vdc) | V2 (Vdc) | I1 (mAdc) max. | I2 (mAdc) max. | Display |
@@ -113,16 +113,16 @@ Coming soon...
 
 ## Bill of Materials
 
-| Quantity | Part | Description| Digi-Key | Amazon
+| Quantity | Part | Description| Datasheet | Source
 |---|---|---|---|---|
 | 1 | 16-LY-01ZL | Futaba 16-Digit Alphanumeric  VFD |
-| 4 | ULN2803A | NPN Darlington Transistor Array (x8) | https://www.digikey.com/en/products/detail/stmicroelectronics/ULN2803A/599591
-| 4 | MCP23008 | I2C I/O Expander (x8) | https://www.digikey.com/en/products/detail/microchip-technology/MCP23008-E-P/735951
-| 4 | 4609X-AP1-103LF | 10K Resistor Array |https://www.digikey.com/en/products/detail/bourns-inc/4609X-AP1-103LF/3741140
-| 1 | LD1117V33 | 3.3V Linear Regulator | https://www.digikey.com/en/products/detail/stmicroelectronics/LD1117V33/586012
+| 4 | ULN2803A | NPN Darlington Transistor Array (x8) | [datasheet](datasheets/uln2803a.pdf) | [digikey](https://www.digikey.com/en/products/detail/stmicroelectronics/ULN2803A/599591)
+| 4 | MCP23008 | I2C I/O Expander (x8) | [datasheet](datasheets/mcp23008.pdf) | [digikey](https://www.digikey.com/en/products/detail/microchip-technology/MCP23008-E-P/735951)
+| 4 | 4609X-AP1-103LF | 10K Resistor Array | | [digikey](https://www.digikey.com/en/products/detail/bourns-inc/4609X-AP1-103LF/3741140)
+| 1 | LD1117V33 | 3.3V Linear Regulator | [datasheet](datasheets/ld1117.pdf) | [digikey](https://www.digikey.com/en/products/detail/stmicroelectronics/LD1117V33/586012)
 | 2 | | 10uF Electrolytic Capacitor |
 | 1 | | 100 ohm 1/4 watt resistor |
-| 1 | | XL6009 DC Boost Converter Module | | https://www.amazon.com/HiLetgo-Adjustable-DC3-0-30V-DC5-35V-Converter/dp/B07BNHR4HW/
+| 1 | | XL6009 DC Boost Converter Module | | [amazon](https://www.amazon.com/HiLetgo-Adjustable-DC3-0-30V-DC5-35V-Converter/dp/B07BNHR4HW/)
 
 
 
