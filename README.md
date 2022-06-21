@@ -1,4 +1,4 @@
-# vfd-display
+# VFD Display Project
 
 Some notes on building a display driver for a Futaba 16-LY-01ZL alphanumeric display.
 It seems that Futaba no longer manufactures or supports these devices, but they are
@@ -29,6 +29,8 @@ display can be multiplexed much like a multi-digit LED display.
          .               R
           /               S
 ```
+
+## Datasheets and Testing
 
 No datasheet is available for the device itself, however, it is mentioned in [this datasheet](TDK-CD1867N.pdf) for DC/AC inverters,
 which provides some key parameters:
@@ -81,6 +83,47 @@ Pin | Type | Number
 35 | Grid | 16
 36 | Anode | A
 37 | Filament | Y
+
+## Block Diagram
+
+There are 35 lines to be controlled.  If we leave out the dot, decimal, and comma,
+then we need 32 GPIO lines in order to control 16 grids and 16 anodes.
+The MCP23008 gives us eight I/O lines controllable via I2C,
+and matches up nicely with an eight-way transistor array (ULN2803A) and eight-way
+resistor bus that switch the 30V power.  Four of each of those can be stacked on an I2C bus as follows:
+
+```
+         /-> 3.3V Linear Regulator -> Display Filament
+5V Power --> 30V Boost Converter -\
+         \----------\             |
+                    |             |
+                    V             V
+MCU -> I2C -> | -> MCP23008 => ULN2803A => Pullups => 8 Grids
+              | -> MCP23008 => ULN2803A => Pullups => 8 Grids
+              | -> MCP23008 => ULN2803A => Pullups => 8 Anodes
+              | -> MCP23008 => ULN2803A => Pullups => 8 Anodes
+
+```
+
+The microcontroller will multiplex the grids and anodes as needed via I2C commands.
+
+## Circuit Board
+
+Coming soon...
+
+## Bill of Materials
+
+| Quantity | Part | Description| Digi-Key | Amazon
+|---|---|---|---|---|
+| 1 | 16-LY-01ZL | Futaba 16-Digit Alphanumeric  VFD |
+| 4 | ULN2803A | NPN Darlington Transistor Array (x8) | https://www.digikey.com/en/products/detail/stmicroelectronics/ULN2803A/599591
+| 4 | MCP23008 | I2C I/O Expander (x8) | https://www.digikey.com/en/products/detail/microchip-technology/MCP23008-E-P/735951
+| 4 | 4609X-AP1-103LF | 10K Resistor Array |https://www.digikey.com/en/products/detail/bourns-inc/4609X-AP1-103LF/3741140
+| 1 | LD1117V33 | 3.3V Linear Regulator | https://www.digikey.com/en/products/detail/stmicroelectronics/LD1117V33/586012
+| 2 | | 10uF Electrolytic Capacitor |
+| 1 | | 100 ohm 1/4 watt resistor |
+| 1 | | XL6009 DC Boost Converter Module | | https://www.amazon.com/HiLetgo-Adjustable-DC3-0-30V-DC5-35V-Converter/dp/B07BNHR4HW/
+
 
 
 
