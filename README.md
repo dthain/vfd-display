@@ -120,7 +120,7 @@ The microcontroller will multiplex the grids and anodes as needed via I2C comman
 | 4 | MCP23008 | I2C I/O Expander (x8) | [datasheet](datasheets/mcp23008.pdf) | [digikey](https://www.digikey.com/en/products/detail/microchip-technology/MCP23008-E-P/735951)
 | 4 | 4609X-AP1-103LF | 10K Resistor Array | | [digikey](https://www.digikey.com/en/products/detail/bourns-inc/4609X-AP1-103LF/3741140)
 | 1 | LD1117V33 | 3.3V Linear Regulator | [datasheet](datasheets/ld1117.pdf) | [digikey](https://www.digikey.com/en/products/detail/stmicroelectronics/LD1117V33/586012)
-| 2 | | 10uF Electrolytic Capacitor | | [digikey](https://www.digikey.com/en/products/detail/panasonic-electronic-components/ECA-1VM100B/2688752)
+| 2 | ECA-1VM-100 | 10uF Electrolytic Capacitor | | [digikey](https://www.digikey.com/en/products/detail/panasonic-electronic-components/ECA-1VM100/245020)
 | 1 | | 100 ohm 1/4 watt resistor | | [digikey](https://www.digikey.com/en/products/detail/yageo/CFR-25JT-52-100R/9098530)
 
 ## Build
