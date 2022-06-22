@@ -109,7 +109,7 @@ The microcontroller will multiplex the grids and anodes as needed via I2C comman
 
 [Fritzing PCB File](vfd-display.fzz)
 
-[!](vfd-display-pcb.png)
+![Circuit Board](vfd-display-pcb.png)
 
 ## Bill of Materials
 
