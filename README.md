@@ -93,36 +93,39 @@ and matches up nicely with an eight-way transistor array (ULN2803A) and eight-wa
 resistor bus that switch the 30V power.  Four of each of those can be stacked on an I2C bus as follows:
 
 ```
-         /-> 3.3V Linear Regulator -> Display Filament
-5V Power --> 30V Boost Converter -\
-         \----------\             |
-                    |             |
-                    V             V
+                              5V Power -> LD33V -> Filament
+                                  |
 MCU -> I2C -> | -> MCP23008 => ULN2803A => Pullups => 8 Grids
               | -> MCP23008 => ULN2803A => Pullups => 8 Grids
               | -> MCP23008 => ULN2803A => Pullups => 8 Anodes
               | -> MCP23008 => ULN2803A => Pullups => 8 Anodes
-
+                                  |
+                              30V Power
 ```
 
 The microcontroller will multiplex the grids and anodes as needed via I2C commands.
 
 ## Circuit Board
 
-Coming soon...
+[Fritzing PCB File](vfd-display.fzz)
+
+[!](vfd-display-pcb.png)
 
 ## Bill of Materials
 
 | Quantity | Part | Description| Datasheet | Source
 |---|---|---|---|---|
-| 1 | 16-LY-01ZL | Futaba 16-Digit Alphanumeric  VFD |
+| 1 | 16-LY-01ZL | Futaba 16-Digit Alphanumeric  VFD | none | eBay
 | 4 | ULN2803A | NPN Darlington Transistor Array (x8) | [datasheet](datasheets/uln2803a.pdf) | [digikey](https://www.digikey.com/en/products/detail/stmicroelectronics/ULN2803A/599591)
 | 4 | MCP23008 | I2C I/O Expander (x8) | [datasheet](datasheets/mcp23008.pdf) | [digikey](https://www.digikey.com/en/products/detail/microchip-technology/MCP23008-E-P/735951)
 | 4 | 4609X-AP1-103LF | 10K Resistor Array | | [digikey](https://www.digikey.com/en/products/detail/bourns-inc/4609X-AP1-103LF/3741140)
 | 1 | LD1117V33 | 3.3V Linear Regulator | [datasheet](datasheets/ld1117.pdf) | [digikey](https://www.digikey.com/en/products/detail/stmicroelectronics/LD1117V33/586012)
-| 1 | XL6009 | DC Boost Converter Module | | [amazon](https://www.amazon.com/HiLetgo-Adjustable-DC3-0-30V-DC5-35V-Converter/dp/B07BNHR4HW/)
 | 2 | | 10uF Electrolytic Capacitor | | [digikey](https://www.digikey.com/en/products/detail/panasonic-electronic-components/ECA-1VM100B/2688752)
-| 1 | | 100 ohm 1/4 watt resistor | [digikey](https://www.digikey.com/en/products/detail/yageo/CFR-25JT-52-100R/9098530)
+| 1 | | 100 ohm 1/4 watt resistor | | [digikey](https://www.digikey.com/en/products/detail/yageo/CFR-25JT-52-100R/9098530)
+
+## Build
+
+Coming soon...
 
 
 
