@@ -93,8 +93,8 @@ and matches up nicely with an eight-way transistor array (ULN2803A) and eight-wa
 resistor bus that switch the 30V power.  Four of each of those can be stacked on an I2C bus as follows:
 
 ```
-                              5V Power -> LD33V -> Filament
-                                  |
+              -> 5V Power -> LD33V -> 3.3V -> Filament
+                     |
 MCU -> I2C -> | -> MCP23008 => ULN2803A => Pullups => 8 Grids
               | -> MCP23008 => ULN2803A => Pullups => 8 Grids
               | -> MCP23008 => ULN2803A => Pullups => 8 Anodes
