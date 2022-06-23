@@ -132,7 +132,7 @@ order from the transistor array, so we end up with the following correspondence 
 output registers and display pins:
 
 | Bank   | I2C Addr | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-|--------|---|---|---|---|---|---|---|---|---|---|
+|--------|----------|---|---|---|---|---|---|---|---|
 | Bank 0 | 0x20 | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
 | Bank 1 | 0x21 | D | K | M | F | L | E | I | H |
 | Bank 2 | 0x22 | C | J | O | P | N | G | B | A |
