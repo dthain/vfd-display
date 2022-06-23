@@ -95,15 +95,13 @@ resistor bus that switch the 30V power.  Four of each of those can be stacked on
 ```
               -> 5V Power -> LD33V -> 3.3V -> Filament
                      |
-MCU -> I2C -> | -> MCP23008 => ULN2803A => Pullups => 8 Grids
-              | -> MCP23008 => ULN2803A => Pullups => 8 Grids
-              | -> MCP23008 => ULN2803A => Pullups => 8 Anodes
-              | -> MCP23008 => ULN2803A => Pullups => 8 Anodes
+MCU -> I2C -> | -> MCP23008 => ULN2803A => Pullups => 8 Grids  (bank 0)
+              | -> MCP23008 => ULN2803A => Pullups => 8 Anodes (bank 1)
+              | -> MCP23008 => ULN2803A => Pullups => 8 Anodes (bank 2)
+              | -> MCP23008 => ULN2803A => Pullups => 8 Grids  (bank 3)
                                   |
                               30V Power
 ```
-
-The microcontroller will multiplex the grids and anodes as needed via I2C commands.
 
 ## Circuit Board
 
@@ -127,6 +125,23 @@ The microcontroller will multiplex the grids and anodes as needed via I2C comman
 
 Coming soon...
 
+## Principle of Operation
 
+For the convenience of board layout, note that the MCP23008 outputs are in reverse
+order from the transistor array, so we end up with the following correspondence between
+output registers and display pins:
 
+| Bank   | I2C Addr | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+|--------|---|---|---|---|---|---|---|---|---|---|
+| Bank 0 | 0x20 | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| Bank 1 | 0x21 | D | K | M | F | L | E | I | H |
+| Bank 2 | 0x22 | C | J | O | P | N | G | B | A |
+| Bank 4 | 0x23 | G9 | G10 | G11 | G12 | G13 | G14 | G15 | G16 |
+
+Note that the logic is inverted: high logic values cause the grids/anodes
+to be grounded while low logic values light things up.
+
+To display a single character, we must send the appropriate bit pattern
+to banks 1/2, and then enable one character by setting one bit low in
+banks 0/4.  Each digit must be shown in turn at a rate of about 100Hz.
 
