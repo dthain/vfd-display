@@ -4,6 +4,8 @@ Some notes on building a display driver for a Futaba 16-LY-01ZL alphanumeric dis
 It seems that Futaba no longer manufactures or supports these devices, but they are
 commonly available for secondhand purchase.  The device has 37 pins at 0.2in spacing.
 
+![](vfd-display.jpg)
+
 This is a vacuum flourescent display (VFD), which is a variant of the vacuum tube.
 A small AC current is used to heat a filament (cathode) when then produces electrons
 via thermionic emission.  The electrons are naturally attracted to anodes, if they
