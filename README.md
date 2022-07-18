@@ -130,7 +130,7 @@ Here is the board fresh from JLCPCB:
 
 Here is the board populated with parts and the display:
 
-![Populated Board](board-full.jpg)
+![Populated Board](board-complete.jpg)
 
 And here is the board powered up for the first time, showing all segments on.
 Note that there is some variation in brightness across the digits.
