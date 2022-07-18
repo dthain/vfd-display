@@ -121,11 +121,23 @@ MCU -> I2C -> | -> MCP23008 => ULN2803A => Pullups => 8 Grids  (bank 0)
 | 4 | 4609X-AP1-103LF | 10K Resistor Array | | [digikey](https://www.digikey.com/en/products/detail/bourns-inc/4609X-AP1-103LF/3741140)
 | 1 | LD1117V33 | 3.3V Linear Regulator | [datasheet](datasheets/ld1117.pdf) | [digikey](https://www.digikey.com/en/products/detail/stmicroelectronics/LD1117V33/586012)
 | 2 | ECA-1VM-100 | 10uF Electrolytic Capacitor | | [digikey](https://www.digikey.com/en/products/detail/panasonic-electronic-components/ECA-1VM100/245020)
-| 1 | | 100 ohm 1/4 watt resistor | | [digikey](https://www.digikey.com/en/products/detail/yageo/CFR-25JT-52-100R/9098530)
 
 ## Build
 
-Coming soon...
+Here is the board fresh from JLCPCB:
+
+![Finished Board](board-empty.jpg)
+
+Here is the board populated with parts and the display:
+
+![Populated Board](board-full.jpg)
+
+And here is the board powered up for the first time, showing all segments on.
+Note that there is some variation in brightness across the digits.
+This is because I am using DC across the filament, which results in some voltage
+drop from one end to the other:
+
+![Board Powered Up](board-power.jpg)
 
 ## Principle of Operation
 
@@ -146,4 +158,8 @@ to be grounded while low logic values light things up.
 To display a single character, we must send the appropriate bit pattern
 to banks 1/2, and then enable one character by setting one bit low in
 banks 0/4.  Each digit must be shown in turn at a rate of about 100Hz.
+
+## Working Code
+
+Coming soon...
 
