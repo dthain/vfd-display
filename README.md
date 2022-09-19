@@ -115,8 +115,8 @@ MCU -> I2C -> | -> MCP23008 => UDN2981 => Pulldowns => 8 Grids  (bank 0)
 
 | Quantity | Part | Description| Datasheet | Source
 |---|---|---|---|---|
-| 1 | 16-LY-01ZL | Futaba 16-Digit Alphanumeric  VFD | none | eBay
-| 4 | UDN2981 | High-Side Power Drivers(x8) | [datasheet](datasheets/udn2981.pdf) | (find on ebay)
+| 1 | 16-LY-01ZL | Futaba 16-Digit Alphanumeric  VFD | none | ebay
+| 4 | UDN2981 | High-Side Power Drivers(x8) | [datasheet](datasheets/udn2981.pdf) | ebay
 | 4 | MCP23008 | I2C I/O Expander (x8) | [datasheet](datasheets/mcp23008.pdf) | [digikey](https://www.digikey.com/en/products/detail/microchip-technology/MCP23008-E-P/735951)
 | 4 | 4609X-AP1-103LF | 100K Resistor Array | | [digikey](https://www.digikey.com/en/products/detail/bourns-inc/4609X-101-104LF/3593673)
 | 1 | LD1117V33 | 3.3V Linear Regulator | [datasheet](datasheets/ld1117.pdf) | [digikey](https://www.digikey.com/en/products/detail/stmicroelectronics/LD1117V33/586012)
