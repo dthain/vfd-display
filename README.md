@@ -20,16 +20,16 @@ to one anode, and each digit is controlled by a separate grid.  As a result, the
 display can be multiplexed much like a multi-digit LED display.
 
 ```
-.             Q
- --- ---         AAA BBB
-|\  |  /|       CD  E  FG
-| \ | / |       C D E F G
- --- ---         HHH III
-| / | \ |       J K L M N
-|/  |  \|       JK  L  MN
- --- ---         OOO PPP
-         .               R
-          /               S
+.             S
+ --- ---         HHH GGG
+|\  |  /|       AI  N  LF
+| \ | / |       A I N L F
+ --- ---         PPP OOO
+| / | \ |       B J M K E
+|/  |  \|       BJ  M  KE
+ --- ---         CCC DDD
+         .               Q 
+          /                R
 ```
 
 ## Datasheets and Testing
@@ -49,41 +49,41 @@ We can test the pinouts quickly by using some lower voltages that are easily ava
 Pin | Type | Number
 ---|---|---
 1 | Filament | X 
-2 | Anode | D
+2 | Anode | I
 3 | Grid | 1
-4 | Anode | Q
+4 | Anode | S
 5 | Grid | 2
-6 | Anode | K
+6 | Anode | J
 7 | Grid | 3
-8 | Anode | M
+8 | Anode | K
 9 | Grid | 4
-10 | Anode | F
+10 | Anode | L
 11 | Grid | 5
-12 | Anode | L
-13 | Anode | E
+12 | Anode | M
+13 | Anode | N
 14 | Grid | 6
-15 | Anode | I
+15 | Anode | O
 16 | Grid | 7
-17 | Anode | H
+17 | Anode | P
 18 | Grid | 8
-19 | Anode | R
+19 | Anode | Q
 20 | Grid | 9
-21 | Anode | S
+21 | Anode | R
 22 | Grid | 10
-23 | Anode | C
+23 | Anode | A
 24 | Grid | 11
-25 | Anode| J
-26 | Anode | O
+25 | Anode| B
+26 | Anode | C
 27 | Grid | 12
-28 | Anode | P
+28 | Anode | D
 29 | Grid | 13
-30 | Anode | N
+30 | Anode | E
 31 | Grid | 14
-32 | Anode | G
+32 | Anode | F
 33 | Grid | 15
-34 | Anode | B
+34 | Anode | G
 35 | Grid | 16
-36 | Anode | A
+36 | Anode | H
 37 | Filament | Y
 
 ## Block Diagram
@@ -148,8 +148,8 @@ output registers and display pins:
 | Bank   | I2C Addr | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 |--------|----------|---|---|---|---|---|---|---|---|
 | Bank 0 | 0x20 | G9 | G10 | G11 | G12 | G13 | G14 | G15 | G16 |
-| Bank 1 | 0x21 | D | K | M | F | L | E | I | H |
-| Bank 2 | 0x22 | C | J | O | P | N | G | B | A |
+| Bank 1 | 0x21 | I | J | K | L | M | N | O | P |
+| Bank 2 | 0x22 | A | B | C | D | E | F | G | H |
 | Bank 3 | 0x23 | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
 
 Note that the logic is inverted: high logic values cause the grids/anodes
