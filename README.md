@@ -154,9 +154,6 @@ output registers and display pins:
 | Bank 2 | 0x22 | A | B | C | D | E | F | G | H |
 | Bank 3 | 0x23 | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
 
-The logic is inverted: high logic values cause the grids/anodes
-to be grounded while low logic values light things up.
-
 To display a single character, we must send the appropriate bit pattern
 to banks 1/2, and then enable one character by setting one bit low in
 banks 0/4.  Each digit must be shown in turn at a rate of about 100Hz.
