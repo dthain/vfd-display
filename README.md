@@ -91,16 +91,16 @@ Pin | Type | Number
 There are 35 lines to be controlled.  If we leave out the dot, decimal, and comma,
 then we need 32 GPIO lines in order to control 16 grids and 16 anodes.
 The MCP23008 gives us eight I/O lines controllable via I2C,
-and matches up nicely with an eight-way transistor array (ULN2803A) and eight-way
+and matches up nicely with an eight-way power driver (UDN2981) and eight-way
 resistor bus that switch the 30V power.  Four of each of those can be stacked on an I2C bus as follows:
 
 ```
               -> 5V Power -> LD33V -> 3.3V -> Filament
                      |
-MCU -> I2C -> | -> MCP23008 => ULN2803A => Pullups => 8 Grids  (bank 0)
-              | -> MCP23008 => ULN2803A => Pullups => 8 Anodes (bank 1)
-              | -> MCP23008 => ULN2803A => Pullups => 8 Anodes (bank 2)
-              | -> MCP23008 => ULN2803A => Pullups => 8 Grids  (bank 3)
+MCU -> I2C -> | -> MCP23008 => UDN2981 => Pulldowns => 8 Grids  (bank 0)
+              | -> MCP23008 => UDN2981 => Pulldowns => 8 Anodes (bank 1)
+              | -> MCP23008 => UDN2981 => Pulldowns => 8 Anodes (bank 2)
+              | -> MCP23008 => UDN2981 => Pulldowns => 8 Grids  (bank 3)
                                   |
                               30V Power
 ```
@@ -116,9 +116,9 @@ MCU -> I2C -> | -> MCP23008 => ULN2803A => Pullups => 8 Grids  (bank 0)
 | Quantity | Part | Description| Datasheet | Source
 |---|---|---|---|---|
 | 1 | 16-LY-01ZL | Futaba 16-Digit Alphanumeric  VFD | none | eBay
-| 4 | ULN2803A | NPN Darlington Transistor Array (x8) | [datasheet](datasheets/uln2803a.pdf) | [digikey](https://www.digikey.com/en/products/detail/stmicroelectronics/ULN2803A/599591)
+| 4 | UDN2981 | High-Side Power Drivers(x8) | [datasheet](datasheets/udn2981.pdf) | (find on ebay)
 | 4 | MCP23008 | I2C I/O Expander (x8) | [datasheet](datasheets/mcp23008.pdf) | [digikey](https://www.digikey.com/en/products/detail/microchip-technology/MCP23008-E-P/735951)
-| 4 | 4609X-AP1-103LF | 10K Resistor Array | | [digikey](https://www.digikey.com/en/products/detail/bourns-inc/4609X-AP1-103LF/3741140)
+| 4 | 4609X-AP1-103LF | 100K Resistor Array | | [digikey](https://www.digikey.com/en/products/detail/bourns-inc/4609X-101-104LF/3593673)
 | 1 | LD1117V33 | 3.3V Linear Regulator | [datasheet](datasheets/ld1117.pdf) | [digikey](https://www.digikey.com/en/products/detail/stmicroelectronics/LD1117V33/586012)
 | 2 | ECA-1VM-100 | 10uF Electrolytic Capacitor | | [digikey](https://www.digikey.com/en/products/detail/panasonic-electronic-components/ECA-1VM100/245020)
 
@@ -128,7 +128,7 @@ Here is the board fresh from JLCPCB:
 
 ![Finished Board](board-empty.jpg)
 
-Here is the board populated with parts and the display:
+Here is the board populated with parts and the display.  (Note that the display faces away from the board.)
 
 ![Populated Board](board-complete.jpg)
 
@@ -147,10 +147,10 @@ output registers and display pins:
 
 | Bank   | I2C Addr | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 |--------|----------|---|---|---|---|---|---|---|---|
-| Bank 0 | 0x20 | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| Bank 0 | 0x20 | G9 | G10 | G11 | G12 | G13 | G14 | G15 | G16 |
 | Bank 1 | 0x21 | D | K | M | F | L | E | I | H |
 | Bank 2 | 0x22 | C | J | O | P | N | G | B | A |
-| Bank 4 | 0x23 | G9 | G10 | G11 | G12 | G13 | G14 | G15 | G16 |
+| Bank 3 | 0x23 | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
 
 Note that the logic is inverted: high logic values cause the grids/anodes
 to be grounded while low logic values light things up.
