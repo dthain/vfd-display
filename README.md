@@ -107,9 +107,9 @@ MCU -> I2C -> | -> MCP23008 => UDN2981 => Pulldowns => 8 Grids  (bank 0)
 
 ## Circuit Board
 
-[Fritzing PCB File](vfd-display.fzz)
+[Fritzing PCB File](vfd-display-3.fzz)
 
-![Circuit Board](vfd-display-pcb.png)
+![Circuit Board](vfd-display-3.png)
 
 ## Bill of Materials
 
