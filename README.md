@@ -119,7 +119,8 @@ MCU -> I2C -> | -> MCP23008 => UDN2981 => Pulldowns => 8 Grids  (bank 0)
 | 4 | UDN2981 | High-Side Power Drivers(x8) | [datasheet](datasheets/udn2981.pdf) | ebay
 | 4 | MCP23008 | I2C I/O Expander (x8) | [datasheet](datasheets/mcp23008.pdf) | [digikey](https://www.digikey.com/en/products/detail/microchip-technology/MCP23008-E-P/735951)
 | 4 | 4609X-AP1-103LF | 100K Resistor Array | | [digikey](https://www.digikey.com/en/products/detail/bourns-inc/4609X-101-104LF/3593673)
-| 1 | XL6009 Module | 5-35V Step-Up Power Module | [amazon](https://www.amazon.com/DZS-Elec-Converter-Adjustable-Regulator/dp/B07L64GJ42)
+| 1 | | 5-35V Step-Up Power Module | | [amazon](https://www.amazon.com/DZS-Elec-Converter-Adjustable-Regulator/dp/B07L64GJ42)
+| 1 | | Arduino Nano (or similar MCU) | | [amazon](gttps://www.amazon.com/Deegoo-ATmega328P-Microcontroller-Board-Arduino/dp/B07R9VWD39)
 | 1 | | 15 Ohm, 1W Resistor | | (R1 filament driver)
 | 2 | | 4.7K Ohm, 1/4W Resistor | | (R2/R3 I2C pullups)
 
