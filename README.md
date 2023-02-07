@@ -92,17 +92,17 @@ There are 35 lines to be controlled.  If we leave out the dot, decimal, and comm
 then we need 32 GPIO lines in order to control 16 grids and 16 anodes.
 The MCP23008 gives us eight I/O lines controllable via I2C,
 and matches up nicely with an eight-way power driver (UDN2981) and eight-way
-resistor bus that switch the 30V power.  Four of each of those can be stacked on an I2C bus as follows:
+resistor bus that switches the 30V power.  Four of each of those can be stacked on an I2C bus as follows:
 
 ```
-              -> 5V Power -> LD33V -> 3.3V -> Filament
-                     |
 MCU -> I2C -> | -> MCP23008 => UDN2981 => Pulldowns => 8 Grids  (bank 0)
               | -> MCP23008 => UDN2981 => Pulldowns => 8 Anodes (bank 1)
               | -> MCP23008 => UDN2981 => Pulldowns => 8 Anodes (bank 2)
               | -> MCP23008 => UDN2981 => Pulldowns => 8 Grids  (bank 3)
-                                  |
-                              30V Power
+                   /               ^
+                  /                |
+5V Power ----------> Boost -> 30V Power
+                   Converter
 ```
 
 ## Circuit Board
@@ -119,8 +119,9 @@ MCU -> I2C -> | -> MCP23008 => UDN2981 => Pulldowns => 8 Grids  (bank 0)
 | 4 | UDN2981 | High-Side Power Drivers(x8) | [datasheet](datasheets/udn2981.pdf) | ebay
 | 4 | MCP23008 | I2C I/O Expander (x8) | [datasheet](datasheets/mcp23008.pdf) | [digikey](https://www.digikey.com/en/products/detail/microchip-technology/MCP23008-E-P/735951)
 | 4 | 4609X-AP1-103LF | 100K Resistor Array | | [digikey](https://www.digikey.com/en/products/detail/bourns-inc/4609X-101-104LF/3593673)
-| 1 | LD1117V33 | 3.3V Linear Regulator | [datasheet](datasheets/ld1117.pdf) | [digikey](https://www.digikey.com/en/products/detail/stmicroelectronics/LD1117V33/586012)
-| 2 | ECA-1VM-100 | 10uF Electrolytic Capacitor | | [digikey](https://www.digikey.com/en/products/detail/panasonic-electronic-components/ECA-1VM100/245020)
+| 1 | XL6009 Module | 5-35V Step-Up Power Module | [amazon](https://www.amazon.com/DZS-Elec-Converter-Adjustable-Regulator/dp/B07L64GJ42)
+| 1 | | 15 Ohm, 1W Resistor | | (R1 filament driver)
+| 2 | | 4.7K Ohm, 1/4W Resistor | | (R2/R3 I2C pullups)
 
 ## Build
 
@@ -152,7 +153,7 @@ output registers and display pins:
 | Bank 2 | 0x22 | A | B | C | D | E | F | G | H |
 | Bank 3 | 0x23 | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
 
-Note that the logic is inverted: high logic values cause the grids/anodes
+The logic is inverted: high logic values cause the grids/anodes
 to be grounded while low logic values light things up.
 
 To display a single character, we must send the appropriate bit pattern
