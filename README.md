@@ -160,5 +160,18 @@ banks 0/4.  Each digit must be shown in turn at a rate of about 100Hz.
 
 ## Working Code
 
-Coming soon...
+The following Arduino project [VFD-Display](Arduino/VFD-Display) puts this into action.
+Briefly, the `MCP23008` module provides access to the four banks via I2C.
+The `VFDController` module stores the 16-character array and transforms ASCII
+into appropriate segments on the controller.  The `VFD-Display` main program
+sets up the controller, and cycles through the digits.
+
+As provided, it will display "YOUR NAME HERE" which you can replace with your own message.
+If the Arduino remains connected to the serial port, you can write arbitrary ASCII lines
+which will then be displayed.
+
+I mounted the board and power supply on a piece of acrylic and use it as my office desk nameplate:
+
+![Office Nameplate](board-nameplate.jpg)
+
 
