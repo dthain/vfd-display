@@ -174,4 +174,4 @@ I mounted the board and power supply on a piece of acrylic and use it as my offi
 
 ![Office Nameplate](board-nameplate.jpg)
 
-
+Because of the dynamic display, the photo doesn't quite capture all of the characters simulataneously, but it looks quite nice to the human eye.
